@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Muthowif - Easy Handling</title>
+    <title>Amanah Umroh - Aplikasi Handling Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,6 +34,50 @@
             max-height: 90vh;
             max-width: 90vw;
         }
+
+        /* Tambahkan di dalam <style> */
+        .goog-te-gadget {
+            font-family: 'Inter', sans-serif !important;
+            color: transparent !important; /* Menyembunyikan teks "Powered by Google" */
+            font-size: 0 !important;
+        }
+
+        /* Styling untuk Dropdown Pilihan Bahasa */
+        .goog-te-combo {
+            padding: 8px 32px 8px 12px !important; /* Padding kanan lebih besar untuk panah */
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 9999px !important; /* Membuatnya rounded pill shape */
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            color: #4a5568 !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            outline: none !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            appearance: none; /* Menghilangkan panah default browser */
+            -webkit-appearance: none;
+            
+            /* Menambahkan ikon panah kustom (opsional, agar lebih cantik) */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+
+        /* Menyembunyikan elemen Google lain yang mengganggu */
+        .goog-logo-link, .goog-te-gadget span {
+            display: none !important;
+        }
+
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
     </style>
 </head>
 <body class="bg-gray-100">
@@ -42,6 +86,9 @@
         
         <!-- Slide 0: Hero -->
         <div id="slide-0" class="slide active flex items-center justify-center bg-white">
+            <div class="absolute top-6 right-6 z-50">
+                <div id="google_translate_element"></div>
+            </div>
             <div class="container mx-auto px-6 py-12 text-center">
                 <div class="max-w-4xl mx-auto">
                     <div class="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
@@ -299,6 +346,17 @@
         </div>
     </div>
 
+    <!-- Google Translate Scripts -->
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'id',
+                    autoDisplay: false // Tambahkan ini agar tidak otomatis muncul bar di atas
+                }, 'google_translate_element');
+            }
+                    </script>
+        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
         let currentSlide = 0;
         let slides = [];
@@ -396,5 +454,4 @@
         }
     </script>
 </body>
-
 </html>

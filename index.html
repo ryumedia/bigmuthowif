@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amanah Umroh - Aplikasi Handling Service</title>
+    <title>Big Muthowwif - Aplikasi Handling Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,60 +35,58 @@
             max-width: 90vw;
         }
 
-        /* Tambahkan di dalam <style> */
-        .goog-te-gadget {
-            font-family: 'Inter', sans-serif !important;
-            color: transparent !important; /* Menyembunyikan teks "Powered by Google" */
-            font-size: 0 !important;
-        }
-
-        /* Styling untuk Dropdown Pilihan Bahasa */
-        .goog-te-combo {
-            padding: 8px 32px 8px 12px !important; /* Padding kanan lebih besar untuk panah */
-            border: 1px solid #e2e8f0 !important;
-            border-radius: 9999px !important; /* Membuatnya rounded pill shape */
-            background-color: rgba(255, 255, 255, 0.9) !important;
-            color: #4a5568 !important;
-            font-family: 'Inter', sans-serif !important;
-            font-size: 14px !important;
-            font-weight: 500 !important;
-            outline: none !important;
-            cursor: pointer !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-            appearance: none; /* Menghilangkan panah default browser */
+        /* Custom Language Selector Style */
+        #lang-selector {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+            padding: 8px 32px 8px 12px; /* Space for custom arrow */
+            border-radius: 9999px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4a5568;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            appearance: none;
             -webkit-appearance: none;
-            
-            /* Menambahkan ikon panah kustom (opsional, agar lebih cantik) */
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
             background-position: right 0.5rem center;
             background-repeat: no-repeat;
             background-size: 1.5em 1.5em;
         }
-
-        /* Menyembunyikan elemen Google lain yang mengganggu */
-        .goog-logo-link, .goog-te-gadget span {
-            display: none !important;
+        
+        /* RTL Support for Arabic */
+        body[dir="rtl"] {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang lebih baik untuk Arab */
         }
-
-        .goog-te-banner-frame.skiptranslate {
-            display: none !important;
+        body[dir="rtl"] #lang-selector {
+            background-position: left 0.5rem center;
+            padding: 8px 12px 8px 32px;
         }
-
-        body {
-            top: 0px !important;
-        }
-
+        body[dir="rtl"] .text-left { text-align: right; }
+        body[dir="rtl"] .md\:text-left { text-align: right; }
+        body[dir="rtl"] .md\:pr-10 { padding-left: 2.5rem; padding-right: 0; }
+        body[dir="rtl"] .md\:order-1 { order: 2; } /* Swap image/text order on Arabic if needed */
+        body[dir="rtl"] .mr-3 { margin-left: 0.75rem; margin-right: 0; }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100" dir="ltr">
 
     <div id="slider-container" class="relative w-full h-screen">
         
         <!-- Slide 0: Hero -->
-        <div id="slide-0" class="slide active flex items-center justify-center bg-white">
+        <div id="slide-0" class="slide active flex items-center justify-center bg-white relative">
+            
+            <!-- Custom Language Switcher -->
             <div class="absolute top-6 right-6 z-50">
-                <div id="google_translate_element"></div>
+                <select id="lang-selector" onchange="changeLanguage(this.value)">
+                    <option value="id">🇮🇩 Indonesia</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ar">🇸🇦 العربية</option>
+                </select>
             </div>
+
             <div class="container mx-auto px-6 py-12 text-center">
                 <div class="max-w-4xl mx-auto">
                     <div class="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
@@ -96,9 +94,9 @@
                     </div>
                     <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiSTYdaMuyeDbubNRrdwuyJxm-3HEvyvu4MhQzBDLposiB6GYn3EI02-pnBJgri86ysxlUb4sEPEYSV8Lsf6ZTqVcqn3n2OH1Xly1I5CkVyT8G2eskWeB5gwwvRp6-b1wfyzEGOrDIQgbZM88mN68t8Al1aKbjvx2YGeDZpKxFBinVR2lVIMSUsDbnHWuo" 
                          alt="Logo Amanah Umroh" 
-                         class="h-20 md:h-24 mx-auto mb-6"
+                         class="h-20 md:h-24 mx-auto mb-6 object-contain"
                          onerror="this.src='https://placehold.co/300x100/E2E8F0/4A5568?text=Logo+Anda'">
-                    <p class="text-lg md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">
+                    <p class="text-lg md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto" data-i18n="hero_desc">
                         Manajemen Handling Service Umroh Lengkap di Ujung Jari Anda.
                     </p>
                     <img 
@@ -122,52 +120,52 @@
                                 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEivxETOzRnPJVQ5ErlVLqqsjpFYgkJ_aD8hfTgBnIJC_AFuI6EekynMrWNNuUfMn8_d_MTo9mX9kU99qQ9NleItmTT-p81R_HL_EVbwSKctlV3kWT8cvGOz4GkthlsrJF7tTs0nRYX7H1Tn-DZQkutcuX-utrKCoe_kY_yZOePJNJJGjPSbq0ns3Z4cIYM" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Dashboard">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-2xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
                             <div class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-video" onclick="openLightbox(this.querySelector('img').src)">
                                 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg2t8Qk__0VXLHD6DJMymzuAs8aSpF0QPqsEF3wD7BFAKPsD1Zyk6kyp6NUyk-phb5Zt_Un-PMSEfEg6gXz5_DtuUuuQL-tB-yhPB6wrXIkMQ3Z0CGRhY1JkGuylJIJuYELDtWEOiDiYEuBTIHBdUS6Aqk-TF9_Iup-dgvs3nldu5U4GrJoSsrQfMytopg" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Data Jamaah">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-2xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
                             <div class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-video" onclick="openLightbox(this.querySelector('img').src)">
                                 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiZV6beUctmGBU_jdmEP8dvei7jOM1D-KQBdS-z9boc21CWSUTnG7QbIcaReX2WL9_ZvtHX4d_VJzpCo-nJHqr4HzUjql2ufeYHFegjMWxiPSSwqgtDviGcU86x9qA_d5pxwbHqFol4C3Dt-E3ulciyoZFJg2CEuZmSEbmuAMzxZlZuTxr11FEHF7DpO8A" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Keuangan">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-2xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
                             <div class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-video" onclick="openLightbox(this.querySelector('img').src)">
                                 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiaFWjoxR3Qt3yxfWnZFcnQGdSFfOJjUlBadZWlU6OKlCu08wNMOW55tVgbbjZvQaYjsQyeLqUpVxsOfpFMteUwoACNUSONo7a6YNWIL2UQDzuUSKRHO7Br6kPsgduajk-L_pt7IMTwI6byEaK8h1okyTQPKLG6m2Xl-u6tjJ9ACynDEs8gqlw08nzYBYo" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Manifest">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-2xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="md:order-1">
-                        <span class="text-sm font-semibold text-blue-400 bg-blue-900 bg-opacity-50 px-3 py-1 rounded-full">Untuk Handling Server</span>
-                        <h2 class="text-3xl md:text-5xl font-bold text-white my-4">
+                        <span class="text-sm font-semibold text-blue-400 bg-blue-900 bg-opacity-50 px-3 py-1 rounded-full" data-i18n="role_handling">Untuk Handling Server</span>
+                        <h2 class="text-3xl md:text-5xl font-bold text-white my-4" data-i18n="title_handling">
                             Manajemen Handling Efisien
                         </h2>
-                        <p class="text-lg text-gray-300 mb-8">
+                        <p class="text-lg text-gray-300 mb-8" data-i18n="desc_handling">
                             Kelola semua data jamaah, muthowwif, dan progres rombongan dari satu dashboard terpusat.
                         </p>
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg text-gray-200">
                                 <i class="fas fa-check-circle text-blue-400 w-6 mr-3"></i>
-                                Dashboard Analitik Rombongan
+                                <span data-i18n="list_handling_1">Dashboard Analitik Rombongan</span>
                             </li>
                             <li class="flex items-center text-lg text-gray-200">
                                 <i class="fas fa-check-circle text-blue-400 w-6 mr-3"></i>
-                                Rating dan Feedback dari Jamaah
+                                <span data-i18n="list_handling_2">Rating dan Feedback dari Jamaah</span>
                             </li>
                             <li class="flex items-center text-lg text-gray-200">
                                 <i class="fas fa-check-circle text-blue-400 w-6 mr-3"></i>
-                                Manajemen Dokumen Digital
+                                <span data-i18n="list_handling_3">Manajemen Dokumen Digital</span>
                             </li>
                         </ul>
                     </div>
@@ -188,51 +186,51 @@
                                      alt="Fitur Task 1" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
 
                             <!-- Gambar 2 -->
                             <div class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-[9/16]" onclick="openLightbox(this.querySelector('img').src)">
-                                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgC3ltz68t7BG3iIOi4SsBceAc56H0fW3Eg40IyYYTodq7J9T-O8WFGY2rTLwIPkkIjl4glnd0KE_zr4av8wCBFZxs8Yg2qkkIi4HCU8tXkug9xCQjKryi7ttrCE1bNJgrYjsErm9-piNkIloLayVGaMMWcmJyPkEEsjs8CwTuVahfJQSnep64DKLyI4v4" 
+                                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg_WTIgYE-KmpxcoLaQmFvJj2qy-fymHYnSqY0idEYupyJPzHr3HLI_hhKopeHcdk3jPiKt1zc0ntbTldn2XqnpPH9nb3nG6wTxYf3y1gfrhUlGa6kJjRCIxFHBssYL-vPmOzSPWbgUPNqYkucmn42IfJxAm3FhhEUsNrxgOzrkpKEzaXYqzTX884R8TqQ" 
                                      alt="Fitur Task 2" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
 
                             <!-- Gambar 3 -->
                             <div class="group relative cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-[9/16]" onclick="openLightbox(this.querySelector('img').src)">
-                                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg_WTIgYE-KmpxcoLaQmFvJj2qy-fymHYnSqY0idEYupyJPzHr3HLI_hhKopeHcdk3jPiKt1zc0ntbTldn2XqnpPH9nb3nG6wTxYf3y1gfrhUlGa6kJjRCIxFHBssYL-vPmOzSPWbgUPNqYkucmn42IfJxAm3FhhEUsNrxgOzrkpKEzaXYqzTX884R8TqQ" 
+                                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgC3ltz68t7BG3iIOi4SsBceAc56H0fW3Eg40IyYYTodq7J9T-O8WFGY2rTLwIPkkIjl4glnd0KE_zr4av8wCBFZxs8Yg2qkkIi4HCU8tXkug9xCQjKryi7ttrCE1bNJgrYjsErm9-piNkIloLayVGaMMWcmJyPkEEsjs8CwTuVahfJQSnep64DKLyI4v4" 
                                      alt="Fitur Task 3" 
                                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-xl"></i>
+                                    <i class="fas fa-search-plus text-white opacity-0 group-hover:opacity-100 text-3xl"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="md:order-1">
-                        <span class="text-sm font-semibold text-orange-700 bg-orange-200 bg-opacity-100 px-3 py-1 rounded-full">Untuk Muthowwif</span>
-                        <h2 class="text-3xl md:text-5xl font-bold text-black my-4">
+                        <span class="text-sm font-semibold text-orange-700 bg-orange-200 bg-opacity-100 px-3 py-1 rounded-full" data-i18n="role_muthowwif">Untuk Muthowwif</span>
+                        <h2 class="text-3xl md:text-5xl font-bold text-black my-4" data-i18n="title_muthowwif">
                             Manajemen Handling Akurat
                         </h2>
-                        <p class="text-lg text-orange-800 mb-8">
+                        <p class="text-lg text-orange-800 mb-8" data-i18n="desc_muthowwif">
                             Kelola semua Task Manajemen dalam satu Aplikasi dengan mudah dan terstruktur.
                         </p>
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg text-orange-700">
                                 <i class="fas fa-check-circle text-orange-400 w-6 mr-3"></i>
-                               Manajemen Status Task dan Subtask
+                               <span data-i18n="list_muthowwif_1">Manajemen Status Task dan Subtask</span>
                             </li>
                             <li class="flex items-center text-lg text-orange-700">
                                 <i class="fas fa-check-circle text-orange-400 w-6 mr-3"></i>
-                                Report Issue atau Problem
+                                <span data-i18n="list_muthowwif_2">Report Issue atau Problem</span>
                             </li>
                             <li class="flex items-center text-lg text-orange-700">
                                 <i class="fas fa-check-circle text-orange-400 w-6 mr-3"></i>
-                                Total Income yang Akurat
+                                <span data-i18n="list_muthowwif_3">Total Income yang Akurat</span>
                             </li>
                         </ul>
                     </div>
@@ -245,29 +243,28 @@
             <div class="container mx-auto px-6 py-12 text-center md:text-left">
                 <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12 max-w-6xl mx-auto">
                     <div class="md:pr-10">
-                        <span class="text-sm font-semibold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Untuk Jamaah</span>
-                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 my-4">
+                        <span class="text-sm font-semibold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full" data-i18n="role_jamaah">Untuk Jamaah</span>
+                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 my-4" data-i18n="title_jamaah">
                             Monitoring Ibadah Real-time
                         </h2>
-                        <p class="text-lg text-gray-600 mb-8">
+                        <p class="text-lg text-gray-600 mb-8" data-i18n="desc_jamaah">
                             Pastikan setiap prosesi ibadah berjalan lancar dengan daftar jadwal dan status muthowif.
                         </p>
                         <ul class="space-y-4">
                             <li class="flex items-center text-lg text-gray-700">
                                 <i class="fas fa-check-circle text-emerald-500 w-6 mr-3"></i>
-                                Task Muthowif dan statusnya terpantau
+                                <span data-i18n="list_jamaah_1">Task Muthowif dan statusnya terpantau</span>
                             </li>
                             <li class="flex items-center text-lg text-gray-700">
                                 <i class="fas fa-check-circle text-emerald-500 w-6 mr-3"></i>
-                                Info Hotel, Kamar dan Rombongan terlihat dai dashboard
+                                <span data-i18n="list_jamaah_2">Info Hotel, Kamar dan Rombongan terlihat dai dashboard</span>
                             </li>
                             <li class="flex items-center text-lg text-gray-700">
                                 <i class="fas fa-check-circle text-emerald-500 w-6 mr-3"></i>
-                                Lokasi penting dan custom recomendation sesuai selera Handling Service
+                                <span data-i18n="list_jamaah_3">Lokasi penting dan custom recomendation sesuai selera Handling Service</span>
                             </li>
                         </ul>
                     </div>
-                    <!-- BAGIAN YANG DIUBAH: Grid 3 Gambar Portrait -->
                     <div class="flex justify-center">
                          <div class="grid grid-cols-3 gap-3 w-full">
                             <!-- Gambar 1 -->
@@ -299,7 +296,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- AKHIR BAGIAN YANG DIUBAH -->
                 </div>
             </div>
         </div>
@@ -311,12 +307,28 @@
                     <div class="w-20 h-20 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-download text-white text-3xl"></i>
                     </div>
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 mt-6">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-i18n="cta_title">
                         Siap Mengubah Pengalaman Mengelola Handling Anda?
                     </h1>
-                    <p class="text-lg md:text-2xl text-emerald-100 mb-10 max-w-2xl mx-auto">
+                    <p class="text-lg md:text-2xl text-emerald-100 mb-10 max-w-2xl mx-auto" data-i18n="cta_desc">
                         Kami Siap Mengembangkan Digitalisasi Bisnis Anda.
                     </p>
+                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#appstore" class="bg-white text-gray-900 font-medium py-3 px-8 rounded-full hover:bg-gray-100 shadow-lg transition-transform transform hover:scale-105 flex items-center w-64 sm:w-auto justify-center">
+                            <i class="fab fa-apple text-2xl mr-3"></i>
+                            <div>
+                                <p class="text-xs -mb-1" data-i18n="download_di">Download di</p>
+                                <p class="text-lg font-semibold">App Store</p>
+                            </div>
+                        </a>
+                        <a href="#playstore" class="bg-white text-gray-900 font-medium py-3 px-8 rounded-full hover:bg-gray-100 shadow-lg transition-transform transform hover:scale-105 flex items-center w-64 sm:w-auto justify-center">
+                            <i class="fab fa-google-play text-2xl mr-3"></i>
+                            <div>
+                                <p class="text-xs -mb-1" data-i18n="tersedia_di">Tersedia di</p>
+                                <p class="text-lg font-semibold">Google Play</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -338,30 +350,113 @@
 
     <!-- Lightbox Modal -->
     <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-95 flex items-center justify-center p-0 transition-opacity duration-300 opacity-0 pointer-events-none" onclick="closeLightbox()">
-        <button class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 focus:outline-none z-50">
+        <button class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 focus:outline-none z-50 drop-shadow-lg">
             &times;
         </button>
-        <div class="relative w-full h-full flex items-center justify-center" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="Zoomed Image" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl transform transition-transform duration-300">
+        <div class="relative w-full h-full flex items-center justify-center p-0" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Zoomed Image" class="max-w-full max-h-full object-contain transform scale-95 transition-transform duration-300">
         </div>
     </div>
-
-    <!-- Google Translate Scripts -->
-        <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                    pageLanguage: 'id',
-                    autoDisplay: false // Tambahkan ini agar tidak otomatis muncul bar di atas
-                }, 'google_translate_element');
-            }
-                    </script>
-        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         let currentSlide = 0;
         let slides = [];
         let dots = [];
-        const totalSlides = 5; // Updated to match ID count 0-4
+        const totalSlides = 5; 
+
+        // Kamus Terjemahan
+        const translations = {
+            id: {
+                hero_desc: "Manajemen Handling Service Umroh Lengkap di Ujung Jari Anda.",
+                role_handling: "Untuk Handling Server",
+                title_handling: "Manajemen Handling Efisien",
+                desc_handling: "Kelola semua data jamaah, muthowwif, dan progres rombongan dari satu dashboard terpusat.",
+                list_handling_1: "Dashboard Analitik Rombongan",
+                list_handling_2: "Rating dan Feedback dari Jamaah",
+                list_handling_3: "Manajemen Dokumen Digital",
+                role_muthowwif: "Untuk Muthowwif",
+                title_muthowwif: "Manajemen Handling Akurat",
+                desc_muthowwif: "Kelola semua Task Manajemen dalam satu Aplikasi dengan mudah dan terstruktur.",
+                list_muthowwif_1: "Manajemen Status Task dan Subtask",
+                list_muthowwif_2: "Report Issue atau Problem",
+                list_muthowwif_3: "Total Income yang Akurat",
+                role_jamaah: "Untuk Jamaah",
+                title_jamaah: "Monitoring Ibadah Real-time",
+                desc_jamaah: "Pastikan setiap prosesi ibadah berjalan lancar dengan daftar jadwal dan status muthowif.",
+                list_jamaah_1: "Task Muthowif dan statusnya terpantau",
+                list_jamaah_2: "Info Hotel, Kamar dan Rombongan terlihat dari dashboard",
+                list_jamaah_3: "Lokasi penting dan rekomendasi sesuai selera Handling Service",
+                cta_title: "Siap Mengubah Pengalaman Mengelola Handling Anda?",
+                cta_desc: "Kami Siap Mengembangkan Digitalisasi Bisnis Anda.",
+                download_di: "Download di",
+                tersedia_di: "Tersedia di"
+            },
+            en: {
+                hero_desc: "Complete Umrah Handling Service Management at Your Fingertips.",
+                role_handling: "For Handling Server",
+                title_handling: "Efficient Handling Management",
+                desc_handling: "Manage all pilgrim data, mutawwif, and group progress from one centralized dashboard.",
+                list_handling_1: "Group Analytics Dashboard",
+                list_handling_2: "Rating and Feedback from Pilgrims",
+                list_handling_3: "Digital Document Management",
+                role_muthowwif: "For Mutawwif",
+                title_muthowwif: "Accurate Handling Management",
+                desc_muthowwif: "Manage all Task Management in one Application easily and structured.",
+                list_muthowwif_1: "Manage Task and Subtask Status",
+                list_muthowwif_2: "Report Issue or Problem",
+                list_muthowwif_3: "Accurate Total Income",
+                role_jamaah: "For Pilgrims",
+                title_jamaah: "Real-time Worship Monitoring",
+                desc_jamaah: "Ensure every worship procession runs smoothly with schedule lists and mutawwif status.",
+                list_jamaah_1: "Mutawwif Tasks and status monitored",
+                list_jamaah_2: "Hotel, Room and Group Info visible from dashboard",
+                list_jamaah_3: "Important locations and recommendations per Handling Service preference",
+                cta_title: "Ready to Transform Your Handling Management Experience?",
+                cta_desc: "We Are Ready to Develop Your Business Digitalization.",
+                download_di: "Download on",
+                tersedia_di: "Get it on"
+            },
+            ar: {
+                hero_desc: "إدارة خدمات العمرة المتكاملة في متناول يدك.",
+                role_handling: "لخادم التعامل",
+                title_handling: "إدارة تعامل فعالة",
+                desc_handling: "إدارة جميع بيانات المعتمرين والمطوفين وتقدم المجموعة من لوحة تحكم مركزية واحدة.",
+                list_handling_1: "لوحة تحليلات المجموعة",
+                list_handling_2: "تقييم وملاحظات المعتمرين",
+                list_handling_3: "إدارة الوثائق الرقمية",
+                role_muthowwif: "للمطوف",
+                title_muthowwif: "إدارة تعامل دقيقة",
+                desc_muthowwif: "إدارة جميع مهام الإدارة في تطبيق واحد بسهولة وتنظيم.",
+                list_muthowwif_1: "إدارة حالة المهام والمهام الفرعية",
+                list_muthowwif_2: "الإبلاغ عن مشكلة أو قضية",
+                list_muthowwif_3: "إجمالي الدخل الدقيق",
+                role_jamaah: "للمعتمرين",
+                title_jamaah: "مراقبة العبادة في الوقت الحقيقي",
+                desc_jamaah: "تأكد من سير كل شعيرة بلاسة مع قوائم الجداول وحالة المطوف.",
+                list_jamaah_1: "مراقبة مهام المطوف وحالتها",
+                list_jamaah_2: "معلومات الفندق والغرفة والمجموعة مرئية من لوحة التحكم",
+                list_jamaah_3: "مواقع مهمة وتوصيات مخصصة حسب تفضيل خدمة التعامل",
+                cta_title: "هل أنت مستعد لتغيير تجربة إدارة التعامل لديك؟",
+                cta_desc: "نحن مستعدون لتطوير رقمنة عملك.",
+                download_di: "حمل من",
+                tersedia_di: "احصل عليه من"
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Ubah arah teks untuk Arab
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Cari semua elemen dengan atribut data-i18n
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
 
         document.addEventListener("DOMContentLoaded", () => {
             slides = document.querySelectorAll(".slide");
@@ -371,7 +466,6 @@
             document.getElementById("next-btn").onclick = nextSlide;
             document.getElementById("prev-btn").onclick = prevSlide;
             
-            // Keyboard navigation
             document.addEventListener('keydown', function(event) {
                 if (event.key === "ArrowRight") nextSlide();
                 if (event.key === "ArrowLeft") prevSlide();
@@ -431,7 +525,6 @@
             const img = document.getElementById('lightbox-img');
             img.src = imageSrc;
             modal.classList.remove('hidden');
-            // Small delay to allow display:block to apply before opacity transition
             setTimeout(() => {
                 modal.classList.remove('opacity-0', 'pointer-events-none');
                 img.classList.remove('scale-95');
